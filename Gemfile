@@ -30,6 +30,7 @@ gem 'jquery-rails'
 gem 'simple_form'
 gem "font-awesome-rails"
 gem 'devise-bootstrap-views', '~> 1.0'
+gem "pundit"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
