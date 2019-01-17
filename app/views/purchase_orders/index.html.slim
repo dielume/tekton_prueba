@@ -1,0 +1,31 @@
+h1 Listing purchase_orders
+
+table
+  thead
+    tr
+      th Description
+      th Photo
+      th User
+      th Status
+      th Shipping date
+      th Reception date
+      th
+      th
+      th
+
+  tbody
+    - @purchase_orders.each do |purchase_order|
+      tr
+        td = purchase_order.description
+        td = purchase_order.photo
+        td = purchase_order.user
+        td = purchase_order.status
+        td = purchase_order.shipping_date
+        td = purchase_order.reception_date
+        td = link_to 'Show', purchase_order
+        td = link_to 'Edit', edit_purchase_order_path(purchase_order)
+        td = link_to 'Destroy', purchase_order, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Purchase order', new_purchase_order_path
