@@ -1,0 +1,6 @@
+.row
+  - flash.each do |msg_type, message|
+    .div class = "alert alert-warning alert-dismissible fade show" role="alert"
+      button.close aria-label="Close" data-dismiss="alert" type="button"
+        span aria-hidden="true"  &times;
+      strong= message
