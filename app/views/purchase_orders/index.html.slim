@@ -1,14 +1,15 @@
-h1 Listing purchase_orders
+h1 Listado de pedidos
 
-table
+table.table.table-striped.table-hover
   thead
     tr
-      th Description
-      th Photo
-      th User
-      th Status
-      th Shipping date
-      th Reception date
+      th Id
+      th Descripción
+      th Foto
+      th Usuario
+      th Estado
+      th Fecha de envío
+      th Fecha de recepción
       th
       th
       th
@@ -16,6 +17,7 @@ table
   tbody
     - @purchase_orders.each do |purchase_order|
       tr
+        td = purchase_order.id
         td = purchase_order.description
         td = purchase_order.photo
         td = purchase_order.user
@@ -28,4 +30,4 @@ table
 
 br
 
-= link_to 'New Purchase order', new_purchase_order_path
+= link_to 'Nuevo pedido', new_purchase_order_path

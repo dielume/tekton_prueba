@@ -19,10 +19,10 @@ html
               - if user_signed_in?
                 li.nav-item.dropdown
                   a#navbarDropdownMenuLink.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#"
-                    | Mozos
+                    | Pedidos
                   .dropdown-menu aria-labelledby="navbarDropdownMenuLink"
-                    a.dropdown-item href=""  Ordenes
-                    a.dropdown-item href=""  Nueva orden
+                    a.dropdown-item href="#{purchase_orders_path}"  Listado
+                    a.dropdown-item href="#{new_purchase_order_path}"  Nuevo pedido
                 li.nav-item.dropdown
                   a#navbarDropdownMenuLink.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#"
                     | Chefs
