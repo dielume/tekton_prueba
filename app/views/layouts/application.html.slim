@@ -25,14 +25,15 @@ html
                     a.dropdown-item href="#{new_purchase_order_path}"  Nuevo pedido
                 li.nav-item.dropdown
                   a#navbarDropdownMenuLink.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#"
-                    | Chefs
+                    | Usuario
                   .dropdown-menu aria-labelledby="navbarDropdownMenuLink"
-                    a.dropdown-item href=""  Ordenes
+                    a.dropdown-item href=""  Datos
+                    = link_to "Cerrar sesión", destroy_user_session_path, :method => :delete, class: "dropdown-item"
               - else
                 li.nav-item
-                  a.nav-link href="#{new_user_session_path}" Log in
+                  a.nav-link href="#{new_user_session_path}" Iniciar Sesión
                 li.nav-item
-                  a.nav-link href="#{new_user_registration_path}" Sign up
+                  a.nav-link href="#{new_user_registration_path}" Registrarse
 
     .container
       br
