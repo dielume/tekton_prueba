@@ -3,13 +3,15 @@ class Message < ApplicationRecord
   belongs_to :chat_room
   validates :body, presence: true
 
-  # after_create_commit :broadcast_create_order
+  after_create_commit :broadcast_create_order
 
 
   def broadcast_create_order
     @message = message.find(self.id)
-    ActionCable.server.broadcast "web_notifications_channel",
-                                 message: "holi"
+    ActionCable.server.broadcast "chat_rooms:#{@message.chat_room.id}",
+                                {message: MessagesController.render(@message.body),
+                                 chatroom_id: @message: message.chat_room.id}
+
   end
 
 end
