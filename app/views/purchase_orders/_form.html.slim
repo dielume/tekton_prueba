@@ -2,7 +2,7 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :description, label: "Descripción"
+    = f.input :description, label: "Descripción", input_html: {class: "form_description"}
     = f.input :photo, label: "Foto"
     - if current_user.admin?
       = f.input :status, collection: PurchaseOrder::STATUS_VALUES, label: "Estado"
