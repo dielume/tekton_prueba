@@ -3,9 +3,11 @@ class ChatRoomsController < ApplicationController
 
   def index
     @chat_rooms = ChatRoom.all
+    authorize @chat_rooms
   end
 
   def show
+    authorize @chat_room
     @messages = @chat_room.messages.take(50)
   end
 

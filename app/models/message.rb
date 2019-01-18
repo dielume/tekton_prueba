@@ -10,7 +10,7 @@ class Message < ApplicationRecord
     @message = message.find(self.id)
     ActionCable.server.broadcast "chat_rooms:#{@message.chat_room.id}",
                                 {message: MessagesController.render(@message.body),
-                                 chatroom_id: @message: message.chat_room.id}
+                                 chatroom_id: @message.chat_room.id}
 
   end
 

@@ -4,12 +4,13 @@ class PurchaseOrdersController < ApplicationController
   # GET /purchase_orders
   # GET /purchase_orders.json
   def index
-    @purchase_orders = PurchaseOrder.all
+    @purchase_orders = policy_scope(PurchaseOrder).all
   end
 
   # GET /purchase_orders/1
   # GET /purchase_orders/1.json
   def show
+    authorize @purchase_order
   end
 
   # GET /purchase_orders/new

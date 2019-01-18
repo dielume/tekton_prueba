@@ -1,7 +1,7 @@
 class PurchaseOrderPolicy < ApplicationPolicy
 
   def p_rule?
-    user.admin? || user.client?
+    user.admin? || user==record.user
   end
 
   def index?
