@@ -12,8 +12,9 @@ table.table.table-striped.table-hover
       th Fecha de envío
       th Fecha de recepción
       th
-      th
-      th
+      - if current_user.admin?
+        th
+        th
 
   tbody
     - @purchase_orders.each do |purchase_order|

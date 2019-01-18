@@ -3,6 +3,7 @@
 
   .form-inputs
     = f.input :description, label: "Descripción", input_html: {class: "form_description"}
+    / = f.file_field :photo
     = f.input :photo, label: "Foto"
     - if current_user.admin?
       = f.input :status, collection: PurchaseOrder::STATUS_VALUES, label: "Estado"
