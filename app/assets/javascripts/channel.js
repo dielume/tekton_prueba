@@ -4,13 +4,13 @@ jQuery(document).on('turbolinks:load', function() {
     var cable_id = $(that).attr('value');
     var prueba = 0
     console.log(cable_id);
-    App.room = App.cable.subscriptions.create("ChatChannel", {
+    App.room = App.cable.subscriptions.create({channel: "ChatChannel", chat_room: "1"}, {
       connected: function() {
               prueba = 1
               console.log("connected")
             },
       disconnected: function() {
-          console.log("disconnected de nuevo")
+          console.log("disconnected")
       },
       received: function(data) {
         if (cable_id == "mozo" && prueba ==1) {
@@ -25,7 +25,13 @@ jQuery(document).on('turbolinks:load', function() {
         }
 
 
-      }
+      },
+      send_message: function(data) {
+      return this.perform("send_messager", {
+        message: "holi"
+      });
+    }
+      
     });
   });
 });

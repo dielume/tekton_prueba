@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :purchase_orders
-  resources :chat_rooms, only: [:index, :show]
+  # resources :messages, only: [:create]
+  resources :chat_rooms, only: [:index, :show] do
+    resources :messages
+  end
   devise_for :users
   root to: "home#index"
 
