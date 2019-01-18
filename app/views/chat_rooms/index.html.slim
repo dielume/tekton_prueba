@@ -1,1 +1,17 @@
-p hola
+h1 Listado de Chats
+
+table.table.table-striped.table-hover
+  thead
+    tr
+      th Id
+      th título
+      th usuario
+      th
+
+  tbody
+    - @chat_rooms.each do |chat_room|
+      tr
+        td = chat_room.id
+        td = chat_room.title
+        td = chat_room.user
+        td = link_to 'Mostrar', chat_room

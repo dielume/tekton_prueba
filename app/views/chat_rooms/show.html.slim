@@ -4,11 +4,11 @@ h1 Chat Administrador
 .fluid-container style="margin-top: 40px"
   .row
     .div data-behaviour='messages'
-      - @chat_room.messages.take(50).each do |message|
+      - @messages.each do |message|
         .div
           strong =  "#{message.user.email}: "
           span = "#{message.body}"
 
   .row
-    = form_for [@chat_room, Message.new] do |f|
+    = form_for [@chat_room, Message.new], remote: true, authenticity_token: true do |f|
       = f.text_area :body, rows:1, class: "form-control", autofocus: true

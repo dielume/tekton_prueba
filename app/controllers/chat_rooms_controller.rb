@@ -2,9 +2,11 @@ class ChatRoomsController < ApplicationController
   before_action :set_chat_room, only: [:show]
 
   def index
+    @chat_rooms = ChatRoom.all
   end
 
   def show
+    @messages = @chat_room.messages.take(50)
   end
 
   private
