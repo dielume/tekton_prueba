@@ -7,7 +7,9 @@ class User < ApplicationRecord
   has_many :purchase_orders
   has_many :chat_rooms
   has_many :messages
+
   before_create :set_default_role
+  after_create :create_chat_room
 
   def admin?
     role == "admin"
@@ -22,8 +24,16 @@ class User < ApplicationRecord
   end
 
   private
+
   def set_default_role
     self.role == "client"
+  end
+
+  def create_chat_room
+    chat = ChatRoom.new
+    chat.user = self
+    chat.title = "room_#{self.email}"
+    chat.save!
   end
 
 end
