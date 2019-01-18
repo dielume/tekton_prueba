@@ -4,7 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :purchase_order
+  has_many :purchase_orders
+  has_many :chat_rooms
+  has_many :messages
   before_create :set_default_role
 
   def admin?

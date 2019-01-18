@@ -8,32 +8,7 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
-        .container
-          a.navbar-brand href="#{root_path}"
-            = fa_icon "square"
-          button.navbar-toggler aria-controls="navbarNavDropdown" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarNavDropdown" data-toggle="collapse" type="button"
-            span.navbar-toggler-icon
-          #navbarNavDropdown.collapse.navbar-collapse.justify-content-between
-            ul.navbar-nav.mr-auto
-              - if user_signed_in?
-                li.nav-item.dropdown
-                  a#navbarDropdownMenuLink.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#"
-                    | Pedidos
-                  .dropdown-menu aria-labelledby="navbarDropdownMenuLink"
-                    a.dropdown-item href="#{purchase_orders_path}"  Listado
-                    a.dropdown-item href="#{new_purchase_order_path}"  Nuevo pedido
-                li.nav-item.dropdown
-                  a#navbarDropdownMenuLink.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#"
-                    | Usuario
-                  .dropdown-menu aria-labelledby="navbarDropdownMenuLink"
-                    a.dropdown-item href=""  Datos
-                    = link_to "Cerrar sesión", destroy_user_session_path, :method => :delete, class: "dropdown-item"
-              - else
-                li.nav-item
-                  a.nav-link href="#{new_user_session_path}" Iniciar Sesión
-                li.nav-item
-                  a.nav-link href="#{new_user_registration_path}" Registrarse    
+    = render "layouts/nav_bar"
     .container
       = render "layouts/flashes"
       br

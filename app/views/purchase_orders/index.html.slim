@@ -26,10 +26,10 @@ table.table.table-striped.table-hover
         td = purchase_order.status
         td = purchase_order.shipping_date
         td = purchase_order.reception_date
-        td = link_to 'Show', purchase_order
+        td = link_to 'Mostrar', purchase_order
         - if current_user.admin?
-          td = link_to 'Edit', edit_purchase_order_path(purchase_order)
-          td = link_to 'Destroy', purchase_order, data: { confirm: 'Are you sure?' }, method: :delete
+          td = link_to 'Editar', edit_purchase_order_path(purchase_order)
+          td = link_to 'Eliminar', purchase_order, data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
