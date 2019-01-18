@@ -5,4 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :purchase_order
+
+  def admin?
+    role == "admin"
+  end
+
+  def client?
+    role == "cliente"
+  end
+
 end
