@@ -20,7 +20,7 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
                 a.dropdown-item href=""  Datos
                 = link_to "Cerrar sesión", destroy_user_session_path, :method => :delete, class: "dropdown-item"
             li.nav-item
-              a.nav-link href="#{chats_path}" Chat
+              a.nav-link href="#{chat_rooms_path}" Chat
           - else
             li.nav-item
               a.nav-link href="#{new_user_session_path}" Iniciar Sesión
