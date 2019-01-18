@@ -1,35 +1,35 @@
-class PointPolicy < ApplicationPolicy
+class PurchaseOrderPolicy < ApplicationPolicy
 
-  def rule?
+  def p_rule?
     user.admin? || user.client?
   end
 
   def index?
-    rule?
+    p_rule?
   end
 
   def show?
-    rule?
+    p_rule?
   end
 
   def create?
-    rule?
+    p_rule?
   end
 
   def new?
-    rule?
+    p_rule?
   end
 
   def update?
-    rule?
+    p_rule?
   end
 
   def edit?
-    rule?
+    p_rule?
   end
 
   def destroy?
-    rule?
+    p_rule?
   end
 
   class Scope < Scope

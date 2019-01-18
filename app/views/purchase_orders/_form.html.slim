@@ -4,10 +4,10 @@
   .form-inputs
     = f.input :description, label: "Descripción"
     = f.input :photo, label: "Foto"
-    / = f.input :user, label: "Usuario"
-    / = f.input :status,label: "Estado"
+    - if current_user.admin?
+      = f.input :status, collection: PurchaseOrder::STATUS_VALUES, label: "Estado"
     = f.input :shipping_date, as: :date, label: "Fecha de envío"
     = f.input :reception_date, as: :date, label: "Fecha de recepción"
 
   .form-actions
-    = f.button :submit, "Crear pedido", class: "btn btn-success"
+    = f.button :submit, "Guardar", class: "btn btn-success"

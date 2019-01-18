@@ -5,13 +5,23 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :purchase_order
+  before_create :set_default_role
 
   def admin?
     role == "admin"
   end
 
   def client?
-    role == "cliente"
+    role == "client"
+  end
+
+  def to_s
+    email
+  end
+
+  private
+  def set_default_role
+    self.role == "client"
   end
 
 end

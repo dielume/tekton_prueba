@@ -44,7 +44,7 @@ class PurchaseOrdersController < ApplicationController
   def update
     respond_to do |format|
       if @purchase_order.update(purchase_order_params)
-        format.html { redirect_to @purchase_order, notice: 'Purchase order was successfully updated.' }
+        format.html { redirect_to purchase_orders_path, notice: 'Purchase order was successfully updated.' }
         format.json { render :show, status: :ok, location: @purchase_order }
       else
         format.html { render :edit }

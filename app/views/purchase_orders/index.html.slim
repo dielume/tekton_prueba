@@ -6,7 +6,8 @@ table.table.table-striped.table-hover
       th Id
       th Descripción
       th Foto
-      th Usuario
+      - if current_user.admin?
+        th Usuario
       th Estado
       th Fecha de envío
       th Fecha de recepción
@@ -20,13 +21,15 @@ table.table.table-striped.table-hover
         td = purchase_order.id
         td = purchase_order.description
         td = purchase_order.photo
-        td = purchase_order.user
+        - if current_user.admin?
+          td = purchase_order.user
         td = purchase_order.status
         td = purchase_order.shipping_date
         td = purchase_order.reception_date
         td = link_to 'Show', purchase_order
-        td = link_to 'Edit', edit_purchase_order_path(purchase_order)
-        td = link_to 'Destroy', purchase_order, data: { confirm: 'Are you sure?' }, method: :delete
+        - if current_user.admin?
+          td = link_to 'Edit', edit_purchase_order_path(purchase_order)
+          td = link_to 'Destroy', purchase_order, data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
