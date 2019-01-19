@@ -3,10 +3,13 @@ h1 Chat Administrador
 #chat_client value="#{@chat_room.id}"
 .fluid-container style="margin-top: 40px"
   .row
-    .div data-behaviour='messages'
+    #chat_messages
       - @messages.each do |message|
         .div
-          strong =  "#{message.user.email}: "
+          - if message.user.admin?
+            strong = "Admin: "
+          - else
+            strong =  "#{message.user.email}: "
           span = "#{message.body}"
 
   .row

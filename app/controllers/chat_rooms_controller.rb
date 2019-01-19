@@ -8,7 +8,8 @@ class ChatRoomsController < ApplicationController
 
   def show
     authorize @chat_room
-    @messages = @chat_room.messages.take(50)
+    @messages = @chat_room.messages.includes(:user).take(50)
+
   end
 
   private

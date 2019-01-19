@@ -3,15 +3,29 @@ class Message < ApplicationRecord
   belongs_to :chat_room
   validates :body, presence: true
 
-  after_create_commit :broadcast_create_order
+  after_create_commit :broadcast_create_message
 
 
-  def broadcast_create_order
-    @message = Message.find(self.id)
-    ActionCable.server.broadcast "chat_rooms_channel", message: "holi"
-    # ActionCable.server.broadcast "chat_rooms:#{@message.chat_room.id}",
-    #                             {message: MessagesController.render(@message.body),
-    #                              chatroom_id: @message.chat_room.id}
+  def broadcast_create_message
+    message = Message.find(self.id)
+    chat_room_id = message.chat_room.id
+    user_email = get_user_email(message)
+
+    ActionCable.server.broadcast "chat_rooms:#{chat_room_id}",
+                                 { message: message.body,
+                                   user_email: user_email
+                                 }
+  end
+
+  private
+
+  def get_user_email(message)
+    user = message.user
+    if user.admin?
+      "Admin"
+    else
+      user.email
+    end
 
   end
 

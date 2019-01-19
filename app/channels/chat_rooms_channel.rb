@@ -1,8 +1,16 @@
 class ChatRoomsChannel < ApplicationCable::Channel
   def subscribed
-    current_user.chat_rooms.each do |chat_room|
-      stream_from "chat_rooms:#{chat_room.id}"
+    if current_user.admin?
+      chat_rooms = ChatRoom.all
+      chat_rooms.each do |chat_room|
+        stream_from "chat_rooms:#{chat_room.id}"
+      end
+    else
+      current_user.chat_rooms.each do |chat_room|
+        stream_from "chat_rooms:#{chat_room.id}"
+      end
     end
+
     # stream_from "chat_rooms_channel:#{current_user.chat_room}"
   end
 
