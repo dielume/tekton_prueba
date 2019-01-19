@@ -7,7 +7,8 @@ class Message < ApplicationRecord
 
 
   def broadcast_create_order
-    # @message = Message.find(self.id)
+    @message = Message.find(self.id)
+    ActionCable.server.broadcast "chat_rooms_channel", message: "holi"
     # ActionCable.server.broadcast "chat_rooms:#{@message.chat_room.id}",
     #                             {message: MessagesController.render(@message.body),
     #                              chatroom_id: @message.chat_room.id}

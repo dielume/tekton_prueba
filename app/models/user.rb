@@ -4,9 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :purchase_orders
-  has_many :chat_rooms
-  has_many :messages
+  has_many :purchase_orders, :dependent => :destroy
+  has_many :chat_rooms, :dependent => :destroy
+  has_many :messages, :dependent => :destroy
 
   before_create :set_default_role
   after_create :create_chat_room
@@ -26,7 +26,7 @@ class User < ApplicationRecord
   private
 
   def set_default_role
-    self.role == "client"
+    self.role = "client"
   end
 
   def create_chat_room

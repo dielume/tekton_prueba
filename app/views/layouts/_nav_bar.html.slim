@@ -13,17 +13,18 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
               .dropdown-menu aria-labelledby="navbarDropdownMenuLink"
                 a.dropdown-item href="#{purchase_orders_path}"  Listado
                 a.dropdown-item href="#{new_purchase_order_path}"  Nuevo pedido
+            li.nav-item
+              - if current_user.admin?
+                a.nav-link href="#{chat_rooms_path}" Chat
+              - else
+                a.nav-link href="#{chat_room_path(current_user.chat_rooms.first)}" Chat
             li.nav-item.dropdown
               a#navbarDropdownMenuLink.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#"
                 | Usuario
               .dropdown-menu aria-labelledby="navbarDropdownMenuLink"
                 a.dropdown-item href=""  Datos
                 = link_to "Cerrar sesión", destroy_user_session_path, :method => :delete, class: "dropdown-item"
-            li.nav-item
-              - if current_user.admin?
-                a.nav-link href="#{chat_rooms_path}" Chat
-              - else
-                a.nav-link href="#{chat_room_path(current_user.chat_rooms.first)}" Chat
+
           - else
             li.nav-item
               a.nav-link href="#{new_user_session_path}" Iniciar Sesión
