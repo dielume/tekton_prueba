@@ -1,11 +1,11 @@
 h1 Chat Administrador
 
 #chat_client value="#{@chat_room.id}"
-.fluid-container style="margin-top: 40px"
+.container
   .row
     #chat_messages
       - @messages.each do |message|
-        .div
+        .div.col-12
           - if message.user.admin?
             strong = "Admin: "
           - else
@@ -13,5 +13,6 @@ h1 Chat Administrador
           span = "#{message.body}"
 
   .row
-    = form_for [@chat_room, Message.new], remote: true, authenticity_token: true do |f|
-      = f.text_area :body, rows:1, class: "form-control", autofocus: true
+    .col-12 style="margin-top:20px;"
+      = form_for [@chat_room, Message.new], remote: true, authenticity_token: true do |f|
+        = f.text_area :body, rows:1, class: "form-control", autofocus: true

@@ -14,6 +14,7 @@ jQuery(document).on('turbolinks:load', function() {
       received: function(data) {
         console.log("Entreeeeee");
         console.log(data);
+        return $('#chat_messages').append(data['message'])
       }
     });
   });
