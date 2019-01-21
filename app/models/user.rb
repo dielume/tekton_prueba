@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :purchase_orders, :dependent => :destroy
   has_many :chat_rooms, :dependent => :destroy
   has_many :messages, :dependent => :destroy
+  has_many :sessions, :dependent => :destroy
 
   before_create :set_default_role
   after_create :create_chat_room
