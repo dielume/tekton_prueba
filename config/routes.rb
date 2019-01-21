@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     as :user do
       post   "/sign-in"       => "sessions#create"
       delete "/sign-out"      => "sessions#destroy"
+      resources :purchase_orders, only: [:index, :show, :create]
     end
   end
 

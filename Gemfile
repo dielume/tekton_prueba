@@ -32,6 +32,7 @@ gem "font-awesome-rails"
 gem 'devise-bootstrap-views', '~> 1.0'
 gem "pundit"
 gem 'activestorage-validator'
+gem 'active_model_serializers', '0.9.3'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

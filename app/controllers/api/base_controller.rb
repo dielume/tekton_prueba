@@ -1,4 +1,4 @@
-class Api::BaseController < ActionController::API
+class Api::BaseController < Api::ApiController
   before_action :require_login!
   helper_method :person_signed_in?, :current_user
 
