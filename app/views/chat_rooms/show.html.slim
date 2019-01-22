@@ -7,6 +7,7 @@ h1 Chat Administrador
       .card.chat_card id="chat_messages"
         - @messages.each do |message|
           p.card-text
+            span => "#{message.created_at.strftime("%H:%M %d/%m/%Y")}"
             - if message.user.admin?
               strong = "Admin: "
             - else

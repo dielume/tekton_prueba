@@ -12,16 +12,20 @@ class Message < ApplicationRecord
     user_email = get_user_email(message)
 
     ActionCable.server.broadcast "chat_rooms:#{chat_room_id}",
-                                 { message: html_text(message.body, user_email),
+                                 { message: html_text(message, user_email),
                                    user_email: user_email
                                  }
   end
 
   private
 
-  def html_text(message_body, user_email)
+  def html_text(message, user_email)
 
-    "<p class='card-text'><strong>#{user_email}: </strong><span>#{message_body}</span></p>"
+    "<p class='card-text'>
+    <span>#{message.created_at.strftime("%H:%M %d/%m/%Y")}</span>
+    <strong>#{user_email}: </strong>
+    <span>#{message.body}</span>
+    </p>"
   end
 
   def get_user_email(message)
