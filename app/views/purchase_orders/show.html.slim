@@ -2,28 +2,39 @@ h1 Detalles de pedido
 
 - if current_user.admin?
   p
-    strong User:
+    strong> User:
     = @purchase_order.user
 
 p
-  strong Id:
+  strong> Id:
   = @purchase_order.id
 
 p
-  strong Descripción:
+  strong> Descripción:
   = @purchase_order.description
+
 p
-  strong Foto:
+  strong> Categoría:
+  = @purchase_order.category
+
+p
+  strong> Foto:
   - if @purchase_order.photo.present?
     br
     = image_tag(@purchase_order.photo)
 
 p
-  strong Estado:
-  = @purchase_order.status
+  strong> Dirección de destino:
+  = @purchase_order.address
+
 p
-  strong Fecha de entrega:
+  strong> Estado:
+  = @purchase_order.status
+
+
+p
+  strong> Fecha de entrega:
   = @purchase_order.shipping_date.strftime("%d/%m/%Y")
 p
-  strong Fecha de recepción:
+  strong> Fecha de recepción:
   = @purchase_order.reception_date.strftime("%d/%m/%Y")

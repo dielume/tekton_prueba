@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root to: "home#index"
   resources :purchase_orders
-  # resources :messages, only: [:create]
   resources :chat_rooms, only: [:index, :show] do
     resources :messages, only: [:create]
   end
