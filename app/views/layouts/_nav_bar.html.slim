@@ -1,11 +1,12 @@
-nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
+nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.justify-content-between
     .container
       a.navbar-brand href="#{root_path}"
-        = fa_icon "square"
+        => fa_icon "square"
+        span Inicio
       button.navbar-toggler aria-controls="navbarNavDropdown" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarNavDropdown" data-toggle="collapse" type="button"
         span.navbar-toggler-icon
-      #navbarNavDropdown.collapse.navbar-collapse.justify-content-between
-        ul.navbar-nav.mr-auto
+      #navbarNavDropdown.collapse.navbar-collapse
+        ul.navbar-nav.ml-auto
           - if user_signed_in?
             li.nav-item.dropdown
               a#navbarDropdownMenuLink.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#"
