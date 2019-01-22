@@ -1,7 +1,5 @@
 $(document).on("turbolinks:load", function() {
 
-  $('#chat_messages').scrollTop($('#chat_messages')[0].scrollHeight);
-
   $('#chat_client').each(function(){
     $("#new_message").on("keypress", function(e) {
       if (e && e.keyCode === 13) {
@@ -9,6 +7,8 @@ $(document).on("turbolinks:load", function() {
         return $(this).submit();
       }
     });
+
+    $('#chat_messages').scrollTop($('#chat_messages')[0].scrollHeight);
   });
 
 

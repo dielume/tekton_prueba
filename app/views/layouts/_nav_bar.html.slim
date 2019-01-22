@@ -21,7 +21,7 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.justify-content-between
                 a.nav-link href="#{chat_room_path(current_user.chat_rooms.first)}" Chat
             li.nav-item.dropdown
               a#navbarDropdownMenuLink.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#"
-                | Usuario
+                = current_user.email
               .dropdown-menu aria-labelledby="navbarDropdownMenuLink"
                 a.dropdown-item href=""  Datos
                 = link_to "Cerrar sesión", destroy_user_session_path, :method => :delete, class: "dropdown-item"
