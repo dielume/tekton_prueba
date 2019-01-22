@@ -20,7 +20,8 @@ class Message < ApplicationRecord
   private
 
   def html_text(message_body, user_email)
-    "<div class='div col-12'><strong>#{user_email}: </strong><span>#{message_body}</span></div>"
+
+    "<p class='card-text'><strong>#{user_email}: </strong><span>#{message_body}</span></p>"
   end
 
   def get_user_email(message)
