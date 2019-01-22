@@ -20,8 +20,6 @@ class Api::PurchaseOrdersController < Api::BaseController
   # POST /purchase_orders.json
   def create
     @purchase_order = PurchaseOrder.new(purchase_order_params)
-    @purchase_order.user = current_user
-    @purchase_order.status = "Espera"
 
     respond_to do |format|
       if @purchase_order.save
@@ -47,6 +45,7 @@ class Api::PurchaseOrdersController < Api::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def purchase_order_params
-      params.require(:purchase_order).permit(:description, :photo, :user_id, :status, :shipping_date, :reception_date)
+      params.require(:purchase_order).permit(:description, :photo, :user_id, :status, :category,
+                                             :shipping_date, :reception_date, :address)
     end
 end

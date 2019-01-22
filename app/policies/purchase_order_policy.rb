@@ -21,15 +21,15 @@ class PurchaseOrderPolicy < ApplicationPolicy
   end
 
   def update?
-    p_rule?
+    user.admin?
   end
 
   def edit?
-    p_rule?
+    user.admin?
   end
 
   def destroy?
-    p_rule?
+    user.admin?
   end
 
   class Scope < Scope

@@ -14,8 +14,9 @@ p
   = @purchase_order.description
 p
   strong Foto:
-  br
-  = image_tag(@purchase_order.photo)
+  - if @purchase_order.photo.present?
+    br
+    = image_tag(@purchase_order.photo)
 
 p
   strong Estado:

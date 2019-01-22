@@ -3,10 +3,12 @@
 
   .form-inputs
     = f.input :description, label: "Descripción", input_html: {class: "form_description"}
+    = f.input :category, collection: PurchaseOrder::CATEGORY_VALUES, label: "Categoría"
     / = f.file_field :photo
     = f.input :photo, label: "Foto"
     - if current_user.admin?
       = f.input :status, collection: PurchaseOrder::STATUS_VALUES, label: "Estado"
+    = f.input :address, label: "Dirección de destino"
     = f.input :shipping_date, as: :date, label: "Fecha de envío"
     = f.input :reception_date, as: :date, label: "Fecha de recepción"
 

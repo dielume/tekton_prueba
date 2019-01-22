@@ -9,6 +9,7 @@ table.table.table-striped.table-hover
       - if current_user.admin?
         th Usuario
       th Estado
+      th Fecha de creación
       th Fecha de envío
       th Fecha de recepción
       th
@@ -25,8 +26,9 @@ table.table.table-striped.table-hover
         - if current_user.admin?
           td = purchase_order.user
         td = purchase_order.status
-        td = purchase_order.shipping_date
-        td = purchase_order.reception_date
+        td = purchase_order.created_at.strftime("%d/%m/%Y")
+        td = purchase_order.shipping_date.strftime("%d/%m/%Y")
+        td = purchase_order.reception_date.strftime("%d/%m/%Y")
         td = link_to 'Mostrar', purchase_order
         - if current_user.admin?
           td = link_to 'Editar', edit_purchase_order_path(purchase_order)
