@@ -19,6 +19,10 @@ class PurchaseOrderPolicy < ApplicationPolicy
   def new?
     p_rule?
   end
+  
+  def status?
+    p_rule?
+  end
 
   def update?
     user.admin?
@@ -31,6 +35,8 @@ class PurchaseOrderPolicy < ApplicationPolicy
   def destroy?
     user.admin?
   end
+
+
 
   class Scope < Scope
     def resolve

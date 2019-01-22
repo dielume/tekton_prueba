@@ -5,7 +5,6 @@ class Api::ApiController < ActionController::API
 
   private
   def user_not_authorized
-    flash[:alert] = "No estás autorizado para realizar esta acción"
-    redirect_to(request.referrer || root_path)
+    render json: {status: "unauthorized"}
   end
 end
