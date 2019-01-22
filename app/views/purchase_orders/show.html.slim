@@ -1,24 +1,28 @@
-p#notice = notice
+h1 Detalles de pedido
+
+- if current_user.admin?
+  p
+    strong User:
+    = @purchase_order.user
 
 p
-  strong Description:
+  strong Id:
+  = @purchase_order.id
+
+p
+  strong Descripción:
   = @purchase_order.description
 p
-  strong Photo:
-  = @purchase_order.photo
+  strong Foto:
+  br
+  = image_tag(@purchase_order.photo)
+
 p
-  strong User:
-  = @purchase_order.user
-p
-  strong Status:
+  strong Estado:
   = @purchase_order.status
 p
-  strong Shipping date:
-  = @purchase_order.shipping_date
+  strong Fecha de entrega:
+  = @purchase_order.shipping_date.strftime("%d/%m/%Y")
 p
-  strong Reception date:
-  = @purchase_order.reception_date
-
-=> link_to 'Edit', edit_purchase_order_path(@purchase_order)
-'|
-=< link_to 'Back', purchase_orders_path
+  strong Fecha de recepción:
+  = @purchase_order.reception_date.strftime("%d/%m/%Y")

@@ -5,7 +5,7 @@ table.table.table-striped.table-hover
     tr
       th Id
       th Descripción
-      th Foto
+      / th Foto
       - if current_user.admin?
         th Usuario
       th Estado
@@ -21,7 +21,7 @@ table.table.table-striped.table-hover
       tr
         td = purchase_order.id
         td = purchase_order.description
-        td = purchase_order.photo
+        / td = purchase_order.photo
         - if current_user.admin?
           td = purchase_order.user
         td = purchase_order.status

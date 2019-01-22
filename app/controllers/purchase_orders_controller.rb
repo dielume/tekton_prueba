@@ -20,6 +20,7 @@ class PurchaseOrdersController < ApplicationController
 
   # GET /purchase_orders/1/edit
   def edit
+    authorize @purchase_order
   end
 
   # POST /purchase_orders
@@ -43,6 +44,7 @@ class PurchaseOrdersController < ApplicationController
   # PATCH/PUT /purchase_orders/1
   # PATCH/PUT /purchase_orders/1.json
   def update
+    authorize @purchase_order
     respond_to do |format|
       if @purchase_order.update(purchase_order_params)
         format.html { redirect_to purchase_orders_path, notice: 'Purchase order was successfully updated.' }
@@ -57,6 +59,7 @@ class PurchaseOrdersController < ApplicationController
   # DELETE /purchase_orders/1
   # DELETE /purchase_orders/1.json
   def destroy
+    authorize @purchase_order
     @purchase_order.destroy
     respond_to do |format|
       format.html { redirect_to purchase_orders_url, notice: 'Purchase order was successfully destroyed.' }

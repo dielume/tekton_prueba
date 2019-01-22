@@ -34,7 +34,12 @@ class PurchaseOrderPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope
+      unless user.admin?
+        scope.where(user_id: user.id)
+      else
+        scope
+      end
     end
   end
+
 end

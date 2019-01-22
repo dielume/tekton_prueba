@@ -1,1 +1,16 @@
 .row
+  .col-12.col-sm-12.col-md-6
+    .card
+      .card-body
+        h5.card-title Ordenes
+        a.card-link href="#{purchase_orders_path}" class="btn btn-outline-success" Ordenes
+        a.card-link href="#{new_purchase_order_path}" class="btn btn-outline-success" Nueva orden
+  .col-12.col-sm-12.col-md-6
+    .card
+      .card-body
+        - if current_user.admin?
+          h5.card-title Chats
+          a.card-link href="#{chat_rooms_path}" class="btn btn-outline-success" Chat
+        - else
+          h5.card-title Chats
+          a.card-link href="#{chat_room_path(current_user.chat_rooms.first)}" class="btn btn-outline-success" Chat
