@@ -5,7 +5,10 @@ class MessagesController < ApplicationController
     message = @chat_room.messages.new(message_params)
     message.user = current_user
     message.save
-    redirect_to @chat_room
+    respond_to do |format|
+      format.js {render :action => 'create'}
+    end
+    # redirect_to @chat_room
   end
 
   private

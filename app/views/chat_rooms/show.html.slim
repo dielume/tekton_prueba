@@ -15,5 +15,5 @@ h1 Chat Administrador
 
   .row
     .col-12 style="margin-top:20px;"
-      = form_for [@chat_room, Message.new], remote: true, authenticity_token: true do |f|
+      = simple_form_for [@chat_room, Message.new], method: :post, remote: true do |f|
         = f.text_area :body, rows:1, class: "form-control", autofocus: true
